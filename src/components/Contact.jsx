@@ -54,7 +54,7 @@ export default function Contact() {
             </div>
             <div>
               <h4 style={{ margin: 0 }}>Phone</h4>
-              <p style={{ margin: 0, color: "#666" }}>+91 9876543210</p>
+              <p style={{ margin: 0, color: "#666" }}>+91 8874999719</p>
             </div>
           </div>
 
@@ -75,7 +75,7 @@ export default function Contact() {
             </div>
             <div>
               <h4 style={{ margin: 0 }}>Email</h4>
-              <p style={{ margin: 0, color: "#666" }}>info@sbtply.com</p>
+              <p style={{ margin: 0, color: "#666" }}>nasimsiddique71@gmail.com</p>
             </div>
           </div>
 
