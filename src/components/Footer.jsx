@@ -37,8 +37,8 @@ export default function Footer() {
         {/* RIGHT */}
         <div>
           <h3 style={{ marginBottom: "10px" }}>Contact Info</h3>
-          <p style={infoStyle}>Phone: +91 9876543210</p>
-          <p style={infoStyle}>Email: info@sbtply.com</p>
+          <p style={infoStyle}>Phone: +91 8874999719</p>
+          <p style={infoStyle}>Email: nasimsiddique71@gmail.com</p>
           <p style={infoStyle}>Location: India</p>
         </div>
       </div>
