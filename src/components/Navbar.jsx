@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 export default function Navbar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // 🔥 screen detect
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -18,7 +18,7 @@ export default function Navbar() {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false); // mobile menu close
+      setMenuOpen(false);
     }
   };
 
@@ -42,30 +42,38 @@ export default function Navbar() {
         background: "#ffffff",
         zIndex: 1000,
         boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
-        boxSizing: "border-box",
       }}
     >
       {/* LOGO */}
-      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      <div
+        onClick={() => scrollToSection("home")}
+        style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }}
+      >
         <img src={logo} style={{ height: "40px" }} />
         <h2 style={{ color: "#c40000", fontWeight: "700" }}>SBTPLY</h2>
       </div>
 
       {/* DESKTOP MENU */}
       {!isMobile && (
-        <div style={{ display: "flex", gap: "25px" }}>
+        <div style={{ display: "flex", gap: "25px", alignItems: "center" }}>
           <span onClick={() => scrollToSection("home")} style={linkStyle}>Home</span>
           <span onClick={() => scrollToSection("about")} style={linkStyle}>About Us</span>
           <span onClick={() => scrollToSection("products")} style={linkStyle}>Products</span>
           <span onClick={() => scrollToSection("whyus")} style={linkStyle}>Why Choose Us</span>
           <span onClick={() => scrollToSection("contact")} style={linkStyle}>Contact Us</span>
+
+          {/* 🔐 ADMIN LOGIN BUTTON */}
+          <Link
+            to="/login"
+            style={{ ...linkStyle, color: "#c40000", fontWeight: "600" }}
+          >
+            Admin
+          </Link>
         </div>
       )}
 
       {/* RIGHT SIDE */}
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        
-        {/* WhatsApp */}
         {!isMobile && (
           <button
             onClick={() => window.open("https://wa.me/919876543210", "_blank")}
@@ -82,12 +90,11 @@ export default function Navbar() {
           </button>
         )}
 
-        {/* MOBILE MENU BUTTON */}
         {isMobile && (
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             style={{
-              fontSize: "20px",
+              fontSize: "22px",
               background: "none",
               border: "none",
               cursor: "pointer",
@@ -120,6 +127,15 @@ export default function Navbar() {
           <span onClick={() => scrollToSection("products")} style={linkStyle}>Products</span>
           <span onClick={() => scrollToSection("whyus")} style={linkStyle}>Why Choose Us</span>
           <span onClick={() => scrollToSection("contact")} style={linkStyle}>Contact Us</span>
+
+          {/* 🔐 ADMIN LOGIN MOBILE */}
+          <Link
+            to="/login"
+            style={{ ...linkStyle, color: "#c40000", fontWeight: "600" }}
+            onClick={() => setMenuOpen(false)}
+          >
+            Admin
+          </Link>
 
           <button
             onClick={() => window.open("https://wa.me/919876543210", "_blank")}

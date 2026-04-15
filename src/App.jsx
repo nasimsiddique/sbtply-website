@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -9,19 +11,49 @@ import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-export default function App() {
+import Admin from "./components/Admin";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+function Home() {
   return (
     <>
       <Navbar />
       <Hero />
-      <About /> 
-      <Stats /> 
+      <About />
+      <Stats />
       <Products />
-      <WhyUs /> 
+      <WhyUs />
       <Growth />
-      <Testimonials /> 
+      <Testimonials />
       <Contact />
-        <Footer />
+      <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+
+        {/* Home */}
+        <Route path="/" element={<Home />} />
+
+        {/* Login */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Protected Admin */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
